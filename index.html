@@ -97,7 +97,7 @@
 
 <script>
   document.getElementById('symptomsForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+    event.preventDefault(); 
     
     var selectedSymptoms = Array.from(document.getElementById('symptoms').selectedOptions).map(option => option.value);
     
