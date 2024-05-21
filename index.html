@@ -108,14 +108,14 @@
     var treatmentHtml = "";
     
     if (selectedSymptoms.includes('1') || selectedSymptoms.includes('2') || selectedSymptoms.includes('3') || selectedSymptoms.includes('4') ) {
-      resultHtml += '<button type="button" class="btn btn-danger">Symptoms are very fatal</button>';
-      treatmentHtml += '<p>Seek immediate medical attention.</p>';
+      resultHtml += '<button type="button" class="btn btn-danger">মারাত্মক লক্ষণ</button>';
+      treatmentHtml += '<li>অতি শীঘ্রই উপজেলা স্বাস্থ্যকমপ্লেক্সে রেফার করতে হবে।</li>';
     } else if (selectedSymptoms.includes('5') || selectedSymptoms.includes('6') ) {
-      resultHtml += '<button type="button" class="btn btn-warning">Symptoms are warning</button>';
-      treatmentHtml += '<p>Monitor symptoms and consider seeking medical advice.</p>';
+      resultHtml += '<button type="button" class="btn btn-warning">কম মারাত্মক লক্ষণ</button>';
+      treatmentHtml +='<li>খাবার স্যালাইন চালিয়ে যেতে হবে।</li>';
     } else {
-      resultHtml += '<button type="button" class="btn btn-success">Symptoms are normal</button>';
-      treatmentHtml += '<p>Stay hydrated and rest.</p>';
+      resultHtml += '<button type="button" class="btn btn-success">স্বাভাবিক লক্ষণ</button>';
+      treatmentHtml += '<li>শিশুকে পুষ্টিকর তরল খাবার দিন।</li>';
     }
     
     resultElement.innerHTML = resultHtml;
