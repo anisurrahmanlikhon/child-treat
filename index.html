@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diarrhoea Symptoms</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .container {
+      margin-top: 50px;
+    }
+    .col:hover {
+      border: 1px solid #007bff;
+      border-radius: 5px;
+    }
+    .col {
+      background-color: #17a2b8;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Diarrhoea Symptoms</h2>
+  <div class="row">
+    <div class="col border" id="symptomsColumn">
+      <table class="table">
+        <tr>
+          <th>Select Symptoms:</th>
+        </tr>
+        <tr>
+          <td>
+            <form id="symptomsForm">
+              <div class="form-group">
+                <select multiple class="form-control" id="symptoms">
+                  <option value="1">Abdominal pain</option>
+                  <option value="2">Fever</option>
+                  <option value="3">Bloody stools</option>
+                  <option value="4">Dehydration</option>
+                  <option value="5">Nausea</option>
+                  <!-- Add more symptoms here -->
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col border" id="resultColumn">
+      <table class="table">
+        <tr>
+          <th>Result:</th>
+        </tr>
+        <tr>
+          <td id="result"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col border" id="treatmentColumn">
+      <table class="table">
+        <tr>
+          <th>Treatment:</th>
+        </tr>
+        <tr>
+          <td id="treatment"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('symptomsForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    var selectedSymptoms = Array.from(document.getElementById('symptoms').selectedOptions).map(option => option.value);
+    
+    var resultElement = document.getElementById('result');
+    var treatmentElement = document.getElementById('treatment');
+    
+    var resultHtml = "";
+    var treatmentHtml = "";
+    
+    if (selectedSymptoms.includes('3') || selectedSymptoms.includes('4')) {
+      resultHtml += '<button type="button" class="btn btn-danger">Symptoms are very fatal</button>';
+      treatmentHtml += '<p>Seek immediate medical attention.</p>';
+    } else if (selectedSymptoms.includes('5')) {
+      resultHtml += '<button type="button" class="btn btn-warning">Symptoms are warning</button>';
+      treatmentHtml += '<p>Monitor symptoms and consider seeking medical advice.</p>';
+    } else {
+      resultHtml += '<button type="button" class="btn btn-success">Symptoms are normal</button>';
+      treatmentHtml += '<p>Stay hydrated and rest.</p>';
+    }
+    
+    resultElement.innerHTML = resultHtml;
+    treatmentElement.innerHTML = treatmentHtml;
+  });
+</script>
+
+</body>
+</html>
