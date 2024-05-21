@@ -24,8 +24,9 @@
 </head>
 <body>
 <div>
-<h2>শিশুর ডায়রিয়া</h2>
-<p><b>জিজ্ঞাসাসমূহ:</b></p>
+<br>
+<center><h2>শিশুর ডায়রিয়া</h2></center>
+<p><b>&emsp;জিজ্ঞাসাসমূহ:</b></p>
 <ul>
   <li>শিশুর কি ডায়রিয়া আছে? হ্যা হলে-</li>
   <li>কত দিন ধরে ডায়রিয়া?</li>
@@ -52,11 +53,14 @@
             <form id="symptomsForm">
               <div class="form-group">
                 <select multiple class="form-control" id="symptoms">
-                  <option value="1">Abdominal pain</option>
-                  <option value="2">Fever</option>
-                  <option value="3">Bloody stools</option>
-                  <option value="4">Dehydration</option>
-                  <option value="5">Nausea</option>
+                  <option value="1">নেতিয়ে পড়েছে </option>
+                  <option value="2">চোখ বসে গেছে</option>
+                  <option value="3">পান কম করে বা পারে না।</option>
+                  <option value="4">পেটে চামড়া দেবে গেছে</option>
+                  <option value="5"> অস্থির ও খিটখিটে</option>
+                  <option value="6">মলে রক্ত আছে</option>
+                  <option value="7">১৪ দিনের বেশি ডায়রিয়া</option>
+                  <option value="8">পানি স্বল্পতা নেই</option>
                   <!-- Add more symptoms here -->
                 </select>
               </div>
@@ -101,10 +105,10 @@
     var resultHtml = "";
     var treatmentHtml = "";
     
-    if (selectedSymptoms.includes('3') || selectedSymptoms.includes('4')) {
+    if (selectedSymptoms.includes('1') || selectedSymptoms.includes('2') || selectedSymptoms.includes('3') || selectedSymptoms.includes('4') ) {
       resultHtml += '<button type="button" class="btn btn-danger">Symptoms are very fatal</button>';
       treatmentHtml += '<p>Seek immediate medical attention.</p>';
-    } else if (selectedSymptoms.includes('5')) {
+    } else if (selectedSymptoms.includes('5') || selectedSymptoms.includes('6') ) {
       resultHtml += '<button type="button" class="btn btn-warning">Symptoms are warning</button>';
       treatmentHtml += '<p>Monitor symptoms and consider seeking medical advice.</p>';
     } else {
