@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>শিশুর অপুষ্টি ও রক্ত স্বল্পতা</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    html, body {
+      height: 100%;
+    }
+    .container {
+      height: 100%;
+      margin-top: 50px;
+    }
+    .col:hover {
+      border: 1px solid #007bff;
+      border-radius: 5px;
+    }
+    .col {
+      background-color:#F5F5DC;
+    }
+  </style>
+</head>
+<body>
+<div>
+<center><header class="col" style="font-size:30px;, height:50px;"><b>শিশুর অপুষ্টি ও রক্ত স্বল্পতা</b></header></center>
+<br>
+<table>
+  <td>
+<h4><b>&emsp;জিজ্ঞাসাসমূহ:</b></h4>
+<br>
+<ul>
+  <li>MUAC দ্বারা অপুষ্ট যাচাই করা হয়েছ?</li>
+  <li>লাল-MUAC(১১.৫ সে.মি. এর কম)</li>
+  <li>লাল-MUAC বা উভয় পা ফোলা?</li>
+  <li>হাতের তালু ফ্যাকাশে? </li>
+  <li>হলুদ-MUAC বা অপুষ্টি?</li>
+  <li>হাতের তালু কম ফ্যাকাশে?</li>
+  <li>সবুজ-MUAC বা অপুষ্টি নেই?</li>
+  <li>হাতের তালু ফ্যাকাশে নয়?</li>
+</ul>
+    
+  </td>
+  <td><img src="earprob.jpg" height="150" width="150"></td>
+</table> 
+</div>
+
+<div class="container">
+ <center><h4>শিশুর কানের সমস্যা চেকার</h4></center> 
+  
+  <div class="row">
+    <div class="col border" id="symptomsColumn">
+      <table class="table">
+        <tr>
+          <th>লক্ষণসমূহ:</th>
+        </tr>
+        <tr>
+          <td>
+            <form id="symptomsForm">
+              <div class="form-group">
+                <select multiple class="form-control" id="symptoms">
+                  <option value="1">লাল-MUAC(১১.৫ সে.মি. এর কম)</option>
+                  <option value="2">লাল-MUAC বা উভয় পা ফোলা</option>
+                  <option value="3">হাতের তালু ফ্যাকাশে বা রক্ত স্বল্পতা</option>
+                  <option value="4">হলুদ-MUAC বা অপুষ্টি</option>
+                  <option value="5">হাতের তালু কম ফ্যাকাশে</option>
+                  <option value="6">সবুজ-MUAC বা অপুষ্টি নেই</option>
+                  <option value="7">হাতের তালু ফ্যাকাশে নয়</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">সাবমিট</button>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col border" id="resultColumn">
+      <table class="table">
+        <tr>
+          <th>শ্রেণীবিভাগ:</th>
+        </tr>
+        <tr>
+          <td id="result"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col border" id="treatmentColumn">
+      <table class="table">
+        <tr>
+          <th>চিকিৎসা:</th>
+        </tr>
+        <tr>
+          <td id="treatment"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('symptomsForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    
+    var selectedSymptoms = Array.from(document.getElementById('symptoms').selectedOptions).map(option => option.value);
+    
+    var resultElement = document.getElementById('result');
+    var treatmentElement = document.getElementById('treatment');
+    
+    var resultHtml = "";
+    var treatmentHtml = "";
+    
+    if (selectedSymptoms.includes('1') || selectedSymptoms.includes('2') || selectedSymptoms.includes('3') ) {
+      resultHtml += '<button type="button" class="btn btn-danger">বেশি মারাত্মক লক্ষণ</button>';
+      treatmentHtml += '<li>কানের প্রদাহ অতিমাত্রার তাই শীঘ্রই উপজেলা স্বাস্থ্যকমপ্লেক্সে রেফার করতে হবে।</li>';
+    } else if (selectedSymptoms.includes('4') || selectedSymptoms.includes('5') ) {
+      resultHtml += '<button type="button" class="btn btn-warning">কম মারাত্মক লক্ষণ</button>';
+      treatmentHtml += '<li>যত্ন সহকারে শিশুর কান পরিষ্কার করে দিতে হবে ও প্রয়োজনে ঔষুধ দিতে হবে।</li>';
+    } else {
+      resultHtml += '<button type="button" class="btn btn-success">স্বাভাবিক লক্ষণ</button>';
+      treatmentHtml += '<li>কানে সমস্যা নেই। তবে শিশুকে সবসময় জীবানুমুক্ত রাখতপ হবে।</li>';
+    }
+    
+    resultElement.innerHTML = resultHtml;
+    treatmentElement.innerHTML = treatmentHtml;
+  });
+</script>
+
+</body>
+</html>
