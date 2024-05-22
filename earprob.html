@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>শিশুর কানের সমস্যা</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    html, body {
+      height: 100%;
+    }
+    .container {
+      height: 100%;
+      margin-top: 50px;
+    }
+    .col:hover {
+      border: 1px solid #007bff;
+      border-radius: 5px;
+    }
+    .col {
+      background-color: skyblue;
+    }
+  </style>
+</head>
+<body>
+<div>
+<center><header class="col" style="font-size:30px;, height:50px;"><b>শিশুর কানের সমস্যা</b></header></center>
+<br>
+<table>
+  <td>
+<h4><b>&emsp;জিজ্ঞাসাসমূহ:</b></h4>
+<br>
+<ul>
+  <li>শিশুর কানে কি ব্যথা আছে? হ্যা হলে-</li>
+  <li>কত দিন হলে কানে ব্যথা?</li>
+  <li>কান থেকে কি পুঁজ পড়ে?</li>
+  <li>কানের পিছনের অংশ কি ফোলা?</li>
+  <li>কান থেকে কি পানি পড়ে?</li>
+  <li>কান থেকে পানি আসে ১৪ দিনের বেশি?</li>
+</ul>
+    
+  </td>
+  <td><img src="fever.jpg" height="150" width="150"></td>
+</table> 
+</div>
+
+<div class="container">
+ <center><h4>শিশুর জ্বর চেকার</h4></center> 
+  
+  <div class="row">
+    <div class="col border" id="symptomsColumn">
+      <table class="table">
+        <tr>
+          <th>লক্ষণসমূহ:</th>
+        </tr>
+        <tr>
+          <td>
+            <form id="symptomsForm">
+              <div class="form-group">
+                <select multiple class="form-control" id="symptoms">
+                  <option value="1">কানে ব্যথা আছে</option>
+                  <option value="2">কান থেকে পুঁজ পড়ে</option>
+                  <option value="3">কানের পিছনের অংশ ফোলা</option>
+                  <option value="4">কান থেকে পানি পড়ে</option>
+                  <option value="5">১৪ দিনের কম কান থেকে পানি আসে</option>
+                  <option value="6">পানি,পুঁজ ও কানে ব্যথা নেই</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">সাবমিট</button>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col border" id="resultColumn">
+      <table class="table">
+        <tr>
+          <th>শ্রেণীবিভাগ:</th>
+        </tr>
+        <tr>
+          <td id="result"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col border" id="treatmentColumn">
+      <table class="table">
+        <tr>
+          <th>চিকিৎসা:</th>
+        </tr>
+        <tr>
+          <td id="treatment"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('symptomsForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    
+    var selectedSymptoms = Array.from(document.getElementById('symptoms').selectedOptions).map(option => option.value);
+    
+    var resultElement = document.getElementById('result');
+    var treatmentElement = document.getElementById('treatment');
+    
+    var resultHtml = "";
+    var treatmentHtml = "";
+    
+    if (selectedSymptoms.includes('1') || selectedSymptoms.includes('2') || selectedSymptoms.includes('3') ) {
+      resultHtml += '<button type="button" class="btn btn-danger">বেশি মারাত্মক লক্ষণ</button>';
+      treatmentHtml += '<li>কানের প্রদাহ অতিমাত্রার তাই শীঘ্রই উপজেলা স্বাস্থ্যকমপ্লেক্সে রেফার করতে হবে।</li>';
+    } else if (selectedSymptoms.includes('4') || selectedSymptoms.includes('5') ) {
+      resultHtml += '<button type="button" class="btn btn-warning">কম মারাত্মক লক্ষণ</button>';
+      treatmentHtml += '<li>যত্ন সহকারে শিশুর কান পরিষ্কার করে দিতে হবে ও প্রয়োজনে ঔষুধ দিতে হবে।</li>';
+    } else {
+      resultHtml += '<button type="button" class="btn btn-success">স্বাভাবিক লক্ষণ</button>';
+      treatmentHtml += '<li>কানে সমস্যা নেই। তবে শিশুকে সবসময় জীবানুমুক্ত রাখতপ হবে।</li>';
+    }
+    
+    resultElement.innerHTML = resultHtml;
+    treatmentElement.innerHTML = treatmentHtml;
+  });
+</script>
+
+</body>
+</html>
