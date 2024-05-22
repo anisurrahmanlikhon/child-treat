@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>শিশুর জ্বর-ম্যালেরিয়া</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    html, body {
+      height: 100%;
+    }
+    .container {
+      height: 100%;
+      margin-top: 50px;
+    }
+    .col:hover {
+      border: 1px solid #007bff;
+      border-radius: 5px;
+    }
+    .col {
+      background-color:#7FFFD4;
+    }
+  </style>
+</head>
+<body>
+<div>
+<center><header class="col" style="font-size:30px;, height:50px;"><b>শিশুর জ্বর-ম্যালেরিয়া নয়</b></header></center>
+<br>
+<table>
+  <td>
+<h4><b>&emsp;জিজ্ঞাসাসমূহ:</b></h4>
+<br>
+<ul>
+  <li>শিশুর কি জ্বর আছে? হ্যা হলে-</li>
+  <li>বয়স কি ৩ মাসের কম?</li>
+  <li>কত দিন ধরে জ্বর?</li>
+  <li>মাথার তালুর নরম অংশ ফুলে উঠে কি?</li>
+  <li>ঘাড় কি শক্ত হয়ে যায়?</li>
+  <li>বমি, অরুচি, নড়াচড়া কম?</li>
+  <li>আর ডি টি করানো হয়ছে? </li>
+  <li>গায়ে দানা দানা লাল বা হাম উঠেছে কিনা?</li>
+  <li>সর্দি, কাশি বা জ্বর?</li>  
+</ul>
+    
+  </td>
+  <td><img src="fever.jpg" height="150" width="150"></td>
+</table> 
+</div>
+
+<div class="container">
+ <center><h4>শিশুর জ্বর চেকার</h4></center> 
+  
+  <div class="row">
+    <div class="col border" id="symptomsColumn">
+      <table class="table">
+        <tr>
+          <th>লক্ষণসমূহ:</th>
+        </tr>
+        <tr>
+          <td>
+            <form id="symptomsForm">
+              <div class="form-group">
+                <select multiple class="form-control" id="symptoms">
+                  <option value="1">মাথার তুলে ফুলে উঠেছে </option>
+                  <option value="2">ঘাড় শক্ত হয়ে গেছে</option>
+                  <option value="3">বমি,অরুচি,নড়াচড়া কম</option>
+                  <option value="4">তলপেটে ব্যথা, ঘন ঘন প্রশ্রাব</option>
+                  <option value="5">৭ দিনের বেশি জ্বর</option>
+                  <option value="6">আর ডি টি পজিটিভ</option>
+                  <option value="7">গায়ে হাম উঠেছে</option>
+                  <option value="8">সাধারন সর্দি, কাশি, জ্বর </option>
+                  <!-- Add more symptoms here -->
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">সাবমিট</button>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col border" id="resultColumn">
+      <table class="table">
+        <tr>
+          <th>শ্রেণীবিভাগ:</th>
+        </tr>
+        <tr>
+          <td id="result"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col border" id="treatmentColumn">
+      <table class="table">
+        <tr>
+          <th>চিকিৎসা:</th>
+        </tr>
+        <tr>
+          <td id="treatment"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('symptomsForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    
+    var selectedSymptoms = Array.from(document.getElementById('symptoms').selectedOptions).map(option => option.value);
+    
+    var resultElement = document.getElementById('result');
+    var treatmentElement = document.getElementById('treatment');
+    
+    var resultHtml = "";
+    var treatmentHtml = "";
+    
+    if (selectedSymptoms.includes('1') || selectedSymptoms.includes('2') || selectedSymptoms.includes('3') || selectedSymptoms.includes('4') || selectedSymptoms.includes('5') || selectedSymptoms.includes('6') ) {
+      resultHtml += '<button type="button" class="btn btn-danger">বেশি মারাত্মক লক্ষণ</button>';
+      treatmentHtml += '<li>অতি শীঘ্রই উপজেলা স্বাস্থ্যকমপ্লেক্সে রেফার করতে হবে।</li>';
+    } else if (selectedSymptoms.includes('7') ) {
+      resultHtml += '<button type="button" class="btn btn-warning">কম মারাত্মক লক্ষণ</button>';
+      treatmentHtml += '<li>শিশুকে হামের টিকা নিশ্চিত করতে হবে এবং জ্বরের জন্য প্যারাসিটামল দিতে হবে।</li>';
+    } else {
+      resultHtml += '<button type="button" class="btn btn-success">স্বাভাবিক লক্ষণ</button>';
+      treatmentHtml += '<li>অব্রোক্সিন পিডিয়াট্রিক ও নাপা পেডিয়াট্রিক ড্রপ দিতে হবে। শিশুকে পুষ্টিকর তরল খাবার দিতে হবে।</li>';
+    }
+    
+    resultElement.innerHTML = resultHtml;
+    treatmentElement.innerHTML = treatmentHtml;
+  });
+</script>
+
+</body>
+</html>
