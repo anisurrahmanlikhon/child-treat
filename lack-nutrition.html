@@ -112,13 +112,13 @@
     
     if (selectedSymptoms.includes('1') || selectedSymptoms.includes('2') || selectedSymptoms.includes('3') ) {
       resultHtml += '<button type="button" class="btn btn-danger">বেশি মারাত্মক লক্ষণ</button>';
-      treatmentHtml += '<li>কানের প্রদাহ অতিমাত্রার তাই শীঘ্রই উপজেলা স্বাস্থ্যকমপ্লেক্সে রেফার করতে হবে।</li>';
+      treatmentHtml += '<li>শিশুটি অপুষ্টি ও রক্তস্বল্পতায় ভুগছে। তাই শীঘ্রই উপজেলা স্বাস্থ্যকমপ্লেক্সে রেফার করতে হবে।</li>';
     } else if (selectedSymptoms.includes('4') || selectedSymptoms.includes('5') ) {
       resultHtml += '<button type="button" class="btn btn-warning">কম মারাত্মক লক্ষণ</button>';
-      treatmentHtml += '<li>যত্ন সহকারে শিশুর কান পরিষ্কার করে দিতে হবে ও প্রয়োজনে ঔষুধ দিতে হবে।</li>';
+      treatmentHtml += '<li>শিশুকে পুষ্টিকর খাবার, ফল ও শাক সবজি খাওয়াতে হবে। তবে মায়ের বুকের দুধের বিকল্প নেই।</li>';
     } else {
       resultHtml += '<button type="button" class="btn btn-success">স্বাভাবিক লক্ষণ</button>';
-      treatmentHtml += '<li>কানে সমস্যা নেই। তবে শিশুকে সবসময় জীবানুমুক্ত রাখতপ হবে।</li>';
+      treatmentHtml += '<li> শিশুটি অপুষ্টিতে ভুগছে না। তবে শিশুকে সবসময় সব সময় পুষ্টিকর খাবার দিতে হবে।</li>';
     }
     
     resultElement.innerHTML = resultHtml;
