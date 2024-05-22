@@ -106,7 +106,7 @@
   document.getElementById('symptomsForm').addEventListener('submit', function(event) {
     event.preventDefault(); 
     
-    var selectedSymptoms = Array.fromt.getElementById('symptoms').selectedOptions).map(option => option.value);
+    var selectedSymptoms = Array.from(document.getElementById('symptoms').selectedOptions).map(option => option.value);
     
     var resultElement = document.getElementById('result');
     var treatmentElement = document.getElementById('treatment');
@@ -114,10 +114,10 @@
     var resultHtml = "";
     var treatmentHtml = "";
     
-    if (selectedSymptoms.includes('1') || selectedSymptoms.includes('2') || selectedSymptoms.includes('3') || selectedSymptoms.includes('4') || selectedSymptoms.includes('5') || selectedSymptoms.includes('6') ) {
+    if (selectedSymptoms.includes('1') || selectedSymptoms.includes('2') || selectedSymptoms.includes('3') || selectedSymptoms.includes('4') ) {
       resultHtml += '<button type="button" class="btn btn-danger">বেশি মারাত্মক লক্ষণ</button>';
       treatmentHtml += '<li>অতি শীঘ্রই উপজেলা স্বাস্থ্যকমপ্লেক্সে রেফার করতে হবে।</li>';
-    } else if (selectedSymptoms.includes('7')) {
+    } else if (selectedSymptoms.includes('5') || selectedSymptoms.includes('6') || selectedSymptoms.includes('7') ) {
       resultHtml += '<button type="button" class="btn btn-warning">কম মারাত্মক লক্ষণ</button>';
       treatmentHtml += '<li>শিশুকে খাবার স্যালাইন চালিয়ে যেতে হবে।</li>';
     } else {
