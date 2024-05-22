@@ -62,14 +62,14 @@
             <form id="symptomsForm">
               <div class="form-group">
                 <select multiple class="form-control" id="symptoms">
-                  <option value="1">নেতিয়ে পড়েছে </option>
-                  <option value="2">চোখ বসে গেছে</option>
-                  <option value="3">পান কম করে বা পারে না</option>
-                  <option value="4">পেটে চামড়া দেবে গেছে</option>
-                  <option value="5"> অস্থির ও খিটখিটে</option>
-                  <option value="6">মলে রক্ত আছে</option>
-                  <option value="7">১৪ দিনের বেশি ডায়রিয়া</option>
-                  <option value="8">পানি স্বল্পতা নেই</option>
+                  <option value="1">মাথার তুলে ফুলে উঠেছে </option>
+                  <option value="2">ঘাড় শক্ত হয়ে গেছে</option>
+                  <option value="3">বমি,অরুচি,নড়াচড়া কম</option>
+                  <option value="4">তলপেটে ব্যথা, ঘন ঘন প্রশ্রাব</option>
+                  <option value="5">৭ দিনের বেশি জ্বর</option>
+                  <option value="6">হাত ও চোখ হলুদ বা জন্ডিস</option>
+                  <option value="7">গায়ে হাম উঠেছে</option>
+                  <option value="8">সাধারন জ্বর হয়েছে</option>
                   <!-- Add more symptoms here -->
                 </select>
               </div>
@@ -106,7 +106,7 @@
   document.getElementById('symptomsForm').addEventListener('submit', function(event) {
     event.preventDefault(); 
     
-    var selectedSymptoms = Array.from(document.getElementById('symptoms').selectedOptions).map(option => option.value);
+    var selectedSymptoms = Array.fromt.getElementById('symptoms').selectedOptions).map(option => option.value);
     
     var resultElement = document.getElementById('result');
     var treatmentElement = document.getElementById('treatment');
@@ -114,10 +114,10 @@
     var resultHtml = "";
     var treatmentHtml = "";
     
-    if (selectedSymptoms.includes('1') || selectedSymptoms.includes('2') || selectedSymptoms.includes('3') || selectedSymptoms.includes('4') ) {
+    if (selectedSymptoms.includes('1') || selectedSymptoms.includes('2') || selectedSymptoms.includes('3') || selectedSymptoms.includes('4') || selectedSymptoms.includes('5') || selectedSymptoms.includes('6') ) {
       resultHtml += '<button type="button" class="btn btn-danger">বেশি মারাত্মক লক্ষণ</button>';
       treatmentHtml += '<li>অতি শীঘ্রই উপজেলা স্বাস্থ্যকমপ্লেক্সে রেফার করতে হবে।</li>';
-    } else if (selectedSymptoms.includes('5') || selectedSymptoms.includes('6') || selectedSymptoms.includes('7') ) {
+    } else if (selectedSymptoms.includes('7')) {
       resultHtml += '<button type="button" class="btn btn-warning">কম মারাত্মক লক্ষণ</button>';
       treatmentHtml += '<li>শিশুকে খাবার স্যালাইন চালিয়ে যেতে হবে।</li>';
     } else {
